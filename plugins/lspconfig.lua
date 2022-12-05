@@ -63,9 +63,7 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-local cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
