@@ -12,7 +12,7 @@ local utils = require "core.utils"
 -- after the language server attaches to the current buffer
 -- local on_attach = require("plugins.configs.lspconfig").on_attach
 
-local on_attach = function(client, bufnr) 
+local on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
 
@@ -63,6 +63,15 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+local cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = cmp_capabilities
+}
 
 lspconfig.rust_analyzer.setup({
     on_attach=on_attach,
@@ -90,9 +99,9 @@ lspconfig.rust_analyzer.setup({
 -- lspconfig.vuels.setup{}
 local util = require 'lspconfig/util'
 
-local script_path = "~/.nvm/versions/node/v16.18.0/lib/node_modules/@volar/vue-language-server/bin/vue-language-server.js"
+local script_path =  os.getenv("HOME") .. "/.nvm/versions/node/v16.18.0/lib/node_modules/@volar/vue-language-server/bin/vue-language-server.js"
 
-local tslib_path = "~/.nvm/versions/node/v16.18.0/lib/node_modules/@vue/cli/node_modules/typescript/lib"
+local tslib_path =  os.getenv("HOME") .. "/.nvm/versions/node/v16.18.0/lib/node_modules/@vue/cli/node_modules/typescript/lib"
 
 lspconfig.volar.setup{
   on_attach = on_attach,

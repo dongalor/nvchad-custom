@@ -15,7 +15,7 @@ M.plugins = {
 }
 
 M.ui = {
-  theme = "wombat",
+  theme = "ayu-dark",
   hl_add = require("custom.highlights").new_hlgroups,
   theme_toggle = { "gruvchad", "gruvbox_light" },
   hl_override = require("custom.highlights").overriden_hlgroups,
