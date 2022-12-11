@@ -86,4 +86,10 @@ return {
     after = "nvim-lspconfig",
   },
   ["mfussenegger/nvim-lint"] = { disable = false },
+  ["MunifTanjim/prettier.nvim"] = {
+    after = "null-ls.nvim",
+    config = function()
+      require "custom.plugins.prettier"
+    end,
+  },
 }

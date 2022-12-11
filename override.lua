@@ -4,6 +4,7 @@ local M = {}
 
 M.treesitter = {
   ensure_installed = {
+    "go",
     "bash",
     "vim",
     "html",
@@ -18,7 +19,7 @@ M.treesitter = {
     "lua",
     "norg",
     "lua",
-    "vue"
+    "vue",
   },
 }
 
